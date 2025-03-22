@@ -83,6 +83,17 @@ const AppointmentsPage = () => {
     setFilterDate(date);
   };
 
+  // Function to format dates in more readable format
+  const formatDate = (dateString) => {
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
   return (
     <StaffLayout>
       <div className="p-4">
