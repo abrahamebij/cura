@@ -1,19 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const Img = ({
-  src,
-  alt,
-  className,
-  priority,
-  props,
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-  priority?: boolean;
-  props?: [];
-}) => {
+const Img = ({ src, alt, className, priority, props }) => {
   return (
     <Image
       src={src}
