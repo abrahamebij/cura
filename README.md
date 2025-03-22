@@ -2,17 +2,23 @@
 
 ## Overview
 
-Cura is an innovative Hospital Management System that aims to improve healthcare operations for both patients and staff.  Built for the Devpost hackathon, it allows users to manage appointments, medicines, medical data, and billing while also giving staff with a dashboard.  It leverages AI, MongoDB, and NextAuth to store data securely.
+Cura (from Latin word meaning "Care") is an innovative Hospital Management System form Stackup's March hackathon that aims to improve healthcare operations for both patients and staff.  Built for the Devpost hackathon, it allows users to manage appointments, medicines, medical data, and billing while also giving staff with a dashboard.  It leverages AI, MongoDB, and NextAuth to store data securely.
 
 ### Why Adopt Cura?
 
 Cura improves hospital operations by consolidating data and automating activities.  It enhances the patient experience by enabling easy appointment booking, record viewing, and bill payment.  The AI-powered chatbot aids with queries, increasing worker availability and operational efficiency.
 
-## Demo Video
+## Demo
+
+### Link
+
+<https://cura.vercel.app>
+
+### Video
 
 Watch Cura in action! Check out our demo video to see how patients and staff interact with the system:
 
-[Insert Video Demo Link Here]
+[Video Demo Link Here](https://github.com/user-attachments/assets/84018af3-df0c-480e-a7f1-ae615f819d6d)
 
 ## Installation and Setup
 
@@ -43,14 +49,14 @@ Watch Cura in action! Check out our demo video to see how patients and staff int
    npm install
     ```
 
-4. **Set Up Environment Variables Create a `.env.local` file in the root directory and add:**
+4. **Set Up Environment Variables Create a .env.local file in the root directory and add:**
 
     ```bash
     MONGODB_URI=your-mongodb-uri
     AUTH_SECRET=your-secret
     ```
 
-4. **Run App**
+5. **Run App**
 
     ```bash
     npm run dev

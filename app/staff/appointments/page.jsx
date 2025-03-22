@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { User } from "lucide-react";
 import StaffLayout from "../../patient/PatientLayout";
 
@@ -44,13 +44,12 @@ const mockAppointments = [
 ];
 
 const AppointmentsPage = () => {
+  const router = useRouter();
   const [appointments, setAppointments] = useState(mockAppointments);
   const [filteredAppointments, setFilteredAppointments] =
     useState(appointments);
   const [filterStatus, setFilterStatus] = useState("all");
   const [filterDate, setFilterDate] = useState("");
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     const filteredAppointments = appointments.filter((appointment) => {
