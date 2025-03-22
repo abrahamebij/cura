@@ -146,7 +146,7 @@ const AppointmentsPage = () => {
                           </div>
                         </td>
                         <td>{formatDate(appointment.date)}</td>
-                        <td>{formatTime(appointment.date)}</td>
+                        <td>(appointment.date)</td>
                         <td>{appointment.reason}</td>
                         <td>
                           <div className="badge badge-outline badge-sm">
