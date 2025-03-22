@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import PatientLayout from "../PatientLayout";
+import PatientLayout from "../../patient/PatientLayout";
 import { FaUser, FaEdit, FaSave } from "react-icons/fa";
 import { toast } from "sonner";
 

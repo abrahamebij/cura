@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import PatientLayout from "../PatientLayout";
+import PatientLayout from "../../patient/PatientLayout";
 import { FaCreditCard, FaFilter, FaCheck, FaClock } from "react-icons/fa";
 
 export default function Billing() {
