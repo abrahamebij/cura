@@ -12,7 +12,7 @@ Cura improves hospital operations by consolidating data and automating activitie
 
 ### Link
 
-<https://cura.vercel.app>
+[<https://cura.vercel.app>](https://cura-six.vercel.app/)
 
 ### Video
 
