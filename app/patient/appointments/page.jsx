@@ -23,79 +23,81 @@ export default function Appointments() {
   const [showNewAppointmentModal, setShowNewAppointmentModal] = useState(false);
 
   useEffect(() => {
-    // Simulate loading data from an API
     setLoading(true);
+    //  fetch data from db
+    if (data) {
+      (async function () {
+        const result = JSON.parse(await findOnePatient(data.user));
+        // console.log(result.response.appointments.length);
+        setPatientData(result.response);
+        setLoading(false);
+      })();
+    }
+  }, [data]);
 
-    // Mock data
-    const mockAppointments = [
-      {
-        id: 1,
-        date: "2025-03-22",
-        time: "10:00 AM",
-        doctor: "Dr. Sarah Johnson",
-        specialty: "Cardiology",
-        location: "Main Hospital, Building A, Room 304",
-        status: "confirmed",
-        type: "in-person",
-        notes: "Remember to bring your medication list",
-        contact: "+1 (555) 123-4567",
-      },
-      {
-        id: 2,
-        date: "2025-04-05",
-        time: "2:30 PM",
-        doctor: "Dr. Michael Wilson",
-        specialty: "General Medicine",
-        location: "Downtown Clinic, Suite 101",
-        status: "pending",
-        type: "in-person",
-        notes: "",
-        contact: "+1 (555) 987-6543",
-      },
-      {
-        id: 3,
-        date: "2025-03-25",
-        time: "11:15 AM",
-        doctor: "Dr. Emily Roberts",
-        specialty: "Dermatology",
-        location: "Virtual Visit",
-        status: "confirmed",
-        type: "telehealth",
-        notes:
-          "Login link will be sent via email 10 minutes before appointment",
-        contact: "+1 (555) 345-6789",
-      },
-      {
-        id: 4,
-        date: "2025-01-15",
-        time: "9:00 AM",
-        doctor: "Dr. Robert Chen",
-        specialty: "Orthopedics",
-        location: "Sports Medicine Center, 2nd Floor",
-        status: "completed",
-        type: "in-person",
-        notes: "Follow-up on knee rehabilitation",
-        contact: "+1 (555) 234-5678",
-      },
-      {
-        id: 5,
-        date: "2025-01-30",
-        time: "3:45 PM",
-        doctor: "Dr. Lisa Brown",
-        specialty: "Neurology",
-        location: "Medical Pavilion, Suite 405",
-        status: "cancelled",
-        type: "in-person",
-        notes: "Rescheduling needed",
-        contact: "+1 (555) 876-5432",
-      },
-    ];
-
-    setTimeout(() => {
-      setAppointments(mockAppointments);
-      setLoading(false);
-    }, 800);
-  }, []);
+  // Mock data
+  const mockAppointments = [
+    {
+      id: 1,
+      date: "2025-03-22",
+      time: "10:00 AM",
+      doctor: "Dr. Sarah Johnson",
+      specialty: "Cardiology",
+      location: "Main Hospital, Building A, Room 304",
+      status: "confirmed",
+      type: "in-person",
+      notes: "Remember to bring your medication list",
+      contact: "+1 (555) 123-4567",
+    },
+    {
+      id: 2,
+      date: "2025-04-05",
+      time: "2:30 PM",
+      doctor: "Dr. Michael Wilson",
+      specialty: "General Medicine",
+      location: "Downtown Clinic, Suite 101",
+      status: "pending",
+      type: "in-person",
+      notes: "",
+      contact: "+1 (555) 987-6543",
+    },
+    {
+      id: 3,
+      date: "2025-03-25",
+      time: "11:15 AM",
+      doctor: "Dr. Emily Roberts",
+      specialty: "Dermatology",
+      location: "Virtual Visit",
+      status: "confirmed",
+      type: "telehealth",
+      notes: "Login link will be sent via email 10 minutes before appointment",
+      contact: "+1 (555) 345-6789",
+    },
+    {
+      id: 4,
+      date: "2025-01-15",
+      time: "9:00 AM",
+      doctor: "Dr. Robert Chen",
+      specialty: "Orthopedics",
+      location: "Sports Medicine Center, 2nd Floor",
+      status: "completed",
+      type: "in-person",
+      notes: "Follow-up on knee rehabilitation",
+      contact: "+1 (555) 234-5678",
+    },
+    {
+      id: 5,
+      date: "2025-01-30",
+      time: "3:45 PM",
+      doctor: "Dr. Lisa Brown",
+      specialty: "Neurology",
+      location: "Medical Pavilion, Suite 405",
+      status: "cancelled",
+      type: "in-person",
+      notes: "Rescheduling needed",
+      contact: "+1 (555) 876-5432",
+    },
+  ];
 
   // Function to format dates in more readable format
   const formatDate = (dateString) => {

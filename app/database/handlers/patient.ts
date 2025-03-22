@@ -2,8 +2,28 @@
 import Patient from "../models/Patient";
 import bcrypt from "bcryptjs";
 
+async function findOnePatient(data: object) {
+  interface results {
+    type: [unknown];
+  }
+
+  const results = await Patient.findOne(data);
+
+  // Return a success message
+  return JSON.stringify({
+    msg: "Patients Found!!!",
+    response: results,
+    statusCode: 200,
+  });
+}
+
 async function findPatients(data: object) {
+  interface results {
+    type: [unknown];
+  }
+
   const results = await Patient.find(data);
+
   // Return a success message
   return JSON.stringify({
     msg: "Patients Found!!!",
@@ -35,4 +55,4 @@ async function createPatient(data: { password: string }) {
   }
 }
 
-export { findPatients, createPatient };
+export { findOnePatient, findPatients, createPatient };

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import FormInput from "../components/FormInput";
 import { signIn } from "next-auth/react";
@@ -10,6 +10,16 @@ import Link from "next/link";
 export default function Login() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [selectedValue, setSelectedValue] = useState();
+  const selectRef = useRef();
+
+  function handleChange() {
+    setSelectedValue(selectRef.current.value);
+  }
+  useEffect(() => {
+    setSelectedValue(selectRef.current.value);
+  }, []);
+
   async function handleSubmit(e) {
     // setLoading(true);
     e.preventDefault();
@@ -19,21 +29,40 @@ export default function Login() {
       email.value.trim(),
       password.value,
     ];
-    console.log(email);
     let data = { email, password };
-
-    try {
-      const result = await signIn("credentials", { redirect: false, ...data });
-      if (result?.error) {
-        toast.error(result?.error);
-      } else {
-        router.push("/");
-        toast.success("Logged in successfully");
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
+    if (portal === "none") {
+      toast.error("Please select the type of portal you want to login to");
       setLoading(false);
+    } else if (portal === "patient") {
+      try {
+        const result = await signIn("credentials", {
+          redirect: false,
+          ...data,
+        });
+        if (result?.error) {
+          toast.error(result?.error);
+        } else {
+          router.push("/patient");
+          toast.success("Logged in successfully");
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    } else if (portal === "staff") {
+      if (password === "choi102") {
+        // localStorage.setItem({ staffId: "staff_001" });
+        localStorage.setItem("staffId", "staff_001");
+        toast.success("Logged in successfully to Dr. Choi's account");
+        router.push("/staff");
+      } else if (password === "sarahSmith2") {
+        localStorage.setItem("staffId", "staff_002");
+        toast.success("Logged in successfully to Dr. Sarah's account");
+        router.push("/staff");
+      } else {
+        toast.error("Wrong password!!! Enter the password specified");
+      }
     }
   }
   return (
@@ -51,6 +80,8 @@ export default function Login() {
               id={"portal"}
               title="Select Portal to log in to:"
               options={["Patient Portal", "Staff Portal"]}
+              selectRef={selectRef}
+              onChange={handleChange}
             />
 
             <FormInput
@@ -58,15 +89,26 @@ export default function Login() {
               id={"email"}
               type={"email"}
               required={true}
+              texts={
+                selectedValue === "staff"
+                  ? ["Enter in a random email....doesn't matter"]
+                  : ["Enter the email you used to register"]
+              }
             />
             <FormInput
               title={"Password"}
               id={"password"}
               type={"password"}
-              texts={[
-                'Type "Patient" for patient portal',
-                'Type "Staff" for staff portal',
-              ]}
+              texts={
+                selectedValue === "staff"
+                  ? [
+                      'Type "choi102" to log in to Dr.Choi\'s account',
+                      'Type "sarahSmith2" to log in to Dr.Sarah\'s account',
+                    ]
+                  : [
+                      'If you don\'t remember your password, just register again because there is no option for "forgot password"',
+                    ]
+              }
             />
           </div>
           <button

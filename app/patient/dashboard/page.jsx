@@ -11,129 +11,137 @@ import {
   FaChartBar,
   FaFileAlt,
 } from "react-icons/fa";
+import { useSession } from "next-auth/react";
+import { findOnePatient } from "../../database/handlers/patient";
 
 export default function Dashboard() {
   // In a real application, you would fetch this data from your API
-  const [patientData, setPatientData] = useState({
-    name: "John Doe",
-    age: 42,
-    bloodType: "A+",
-    lastCheckup: "2025-03-01",
-    upcomingAppointments: [
-      {
-        id: 1,
-        date: "2025-03-20",
-        time: "10:00 AM",
-        doctor: "Dr. Sarah Johnson",
-        department: "Cardiology",
-        status: "Confirmed",
-      },
-      {
-        id: 2,
-        date: "2025-04-05",
-        time: "2:30 PM",
-        doctor: "Dr. Michael Wilson",
-        department: "General Checkup",
-        status: "Pending",
-      },
-    ],
-    recentPrescriptions: [
-      {
-        id: 101,
-        name: "Lisinopril",
-        dosage: "10mg",
-        frequency: "Once daily",
-        prescribed: "2025-03-12",
-        refills: 2,
-      },
-      {
-        id: 102,
-        name: "Metformin",
-        dosage: "500mg",
-        frequency: "Twice daily",
-        prescribed: "2025-03-10",
-        refills: 5,
-      },
-    ],
-    pendingBills: [
-      {
-        id: 201,
-        service: "Cardiology Consultation",
-        amount: 175.0,
-        date: "2025-03-12",
-        status: "Pending",
-      },
-      {
-        id: 202,
-        service: "Laboratory Tests",
-        amount: 220.5,
-        date: "2025-03-12",
-        status: "Processing",
-      },
-    ],
-    notifications: [
-      {
-        id: 301,
-        message: "Your lab results are ready to view",
-        date: "2025-03-15",
-        read: false,
-        priority: "high",
-      },
-      {
-        id: 302,
-        message: "Appointment reminder: Cardiology, March 20th",
-        date: "2025-03-14",
-        read: true,
-        priority: "medium",
-      },
-      {
-        id: 303,
-        message: "New message from Dr. Johnson",
-        date: "2025-03-13",
-        read: false,
-        priority: "medium",
-      },
-    ],
-    vitalStats: [
-      {
-        name: "Blood Pressure",
-        value: "120/80 mmHg",
-        date: "2025-03-01",
-        status: "normal",
-      },
-      {
-        name: "Heart Rate",
-        value: "72 bpm",
-        date: "2025-03-01",
-        status: "normal",
-      },
-      {
-        name: "Blood Glucose",
-        value: "95 mg/dL",
-        date: "2025-03-01",
-        status: "normal",
-      },
-      {
-        name: "Cholesterol",
-        value: "185 mg/dL",
-        date: "2025-03-01",
-        status: "normal",
-      },
-    ],
-  });
-
-  const [loading, setLoading] = useState(false);
+  const { data } = useSession();
+  const [patientData, setPatientData] = useState({});
+  const [email, setEmail] = useState();
+  const [loading, setLoading] = useState(true);
 
   // Simulate loading data from an API
   useEffect(() => {
     setLoading(true);
-    // In a real app, you would fetch data here
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 500);
+    //  fetch data from db
+    if (data) {
+      (async function () {
+        const result = JSON.parse(await findOnePatient(data.user));
+        // console.log(result.response.appointments.length);
+        setPatientData(result.response);
+        setLoading(false);
+      })();
+    }
+  }, [data]);
 
-    return () => clearTimeout(timer);
-  }, []);
+  // const [patientData, setPatientData] = useState({
+  //   name: "John Doe",
+  //   age: 42,
+  //   bloodType: "A+",
+  //   lastCheckup: "2025-03-01",
+  //   upcomingAppointments: [
+  //     {
+  //       id: 1,
+  //       date: "2025-03-20",
+  //       time: "10:00 AM",
+  //       doctor: "Dr. Sarah Johnson",
+  //       department: "Cardiology",
+  //       status: "Confirmed",
+  //     },
+  //     {
+  //       id: 2,
+  //       date: "2025-04-05",
+  //       time: "2:30 PM",
+  //       doctor: "Dr. Michael Wilson",
+  //       department: "General Checkup",
+  //       status: "Pending",
+  //     },
+  //   ],
+  //   recentPrescriptions: [
+  //     {
+  //       id: 101,
+  //       name: "Lisinopril",
+  //       dosage: "10mg",
+  //       frequency: "Once daily",
+  //       prescribed: "2025-03-12",
+  //       refills: 2,
+  //     },
+  //     {
+  //       id: 102,
+  //       name: "Metformin",
+  //       dosage: "500mg",
+  //       frequency: "Twice daily",
+  //       prescribed: "2025-03-10",
+  //       refills: 5,
+  //     },
+  //   ],
+  //   pendingBills: [
+  //     {
+  //       id: 201,
+  //       service: "Cardiology Consultation",
+  //       amount: 175.0,
+  //       date: "2025-03-12",
+  //       status: "Pending",
+  //     },
+  //     {
+  //       id: 202,
+  //       service: "Laboratory Tests",
+  //       amount: 220.5,
+  //       date: "2025-03-12",
+  //       status: "Processing",
+  //     },
+  //   ],
+  //   notifications: [
+  //     {
+  //       id: 301,
+  //       message: "Your lab results are ready to view",
+  //       date: "2025-03-15",
+  //       read: false,
+  //       priority: "high",
+  //     },
+  //     {
+  //       id: 302,
+  //       message: "Appointment reminder: Cardiology, March 20th",
+  //       date: "2025-03-14",
+  //       read: true,
+  //       priority: "medium",
+  //     },
+  //     {
+  //       id: 303,
+  //       message: "New message from Dr. Johnson",
+  //       date: "2025-03-13",
+  //       read: false,
+  //       priority: "medium",
+  //     },
+  //   ],
+  //   vitalStats: [
+  //     {
+  //       name: "Blood Pressure",
+  //       value: "120/80 mmHg",
+  //       date: "2025-03-01",
+  //       status: "normal",
+  //     },
+  //     {
+  //       name: "Heart Rate",
+  //       value: "72 bpm",
+  //       date: "2025-03-01",
+  //       status: "normal",
+  //     },
+  //     {
+  //       name: "Blood Glucose",
+  //       value: "95 mg/dL",
+  //       date: "2025-03-01",
+  //       status: "normal",
+  //     },
+  //     {
+  //       name: "Cholesterol",
+  //       value: "185 mg/dL",
+  //       date: "2025-03-01",
+  //       status: "normal",
+  //     },
+  //   ],
+  // });
 
   // Function to format dates in more readable format
   const formatDate = (dateString) => {
@@ -141,8 +149,8 @@ export default function Dashboard() {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  // Count unread notifications
-  const unreadCount = patientData.notifications.filter((n) => !n.read).length;
+  // // Count unread notifications
+  // const unreadCount = patientData.notifications.filter((n) => !n.read).length;
 
   return (
     <PatientLayout title="Dashboard">
@@ -165,9 +173,15 @@ export default function Dashboard() {
                   </h3>
                   <div className="mt-2 text-sm text-gray-600">
                     <p>
-                      Blood Type: {patientData.bloodType} | Age:{" "}
-                      {patientData.age} | Last Checkup:{" "}
-                      {formatDate(patientData.lastCheckup)}
+                      Blood Group:{" "}
+                      <span className="uppercase inline">
+                        {patientData.bloodGroup}
+                      </span>{" "}
+                      | Age:{" "}
+                      {new Date().getFullYear() -
+                        new Date(`${patientData.dob}`).getFullYear()}
+                      {/* | Last Checkup:{" "}
+                      {formatDate(patientData.lastCheckup)} */}
                     </p>
                   </div>
                 </div>
@@ -189,7 +203,7 @@ export default function Dashboard() {
                       Upcoming Appointments
                     </h3>
                     <p className="text-lg font-medium">
-                      {patientData.upcomingAppointments.length}
+                      {patientData.appointments.length}
                     </p>
                   </div>
                 </div>
@@ -216,7 +230,7 @@ export default function Dashboard() {
                       Active Prescriptions
                     </h3>
                     <p className="text-lg font-medium">
-                      {patientData.recentPrescriptions.length}
+                      {patientData.prescriptions.length}
                     </p>
                   </div>
                 </div>
@@ -232,7 +246,7 @@ export default function Dashboard() {
             </div>
 
             {/* Billing */}
-            <div className="card bg-base-100 shadow-lg">
+            {/* <div className="card bg-base-100 shadow-lg">
               <div className="card-body p-4">
                 <div className="flex items-center">
                   <div className="flex-shrink-0 bg-warning rounded-md p-3 text-white">
@@ -259,10 +273,10 @@ export default function Dashboard() {
                   Pay bills
                 </Link>
               </div>
-            </div>
+            </div> */}
 
             {/* Notifications */}
-            <div className="card bg-base-100 shadow-lg">
+            {/* <div className="card bg-base-100 shadow-lg">
               <div className="card-body p-4">
                 <div className="flex items-center">
                   <div className="flex-shrink-0 bg-error rounded-md p-3 text-white">
@@ -281,7 +295,7 @@ export default function Dashboard() {
                   Mark all as read
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
@@ -301,9 +315,9 @@ export default function Dashboard() {
                   </Link>
                 </div>
                 <div className="divider my-2"></div>
-                {patientData.upcomingAppointments.length > 0 ? (
+                {patientData.appointments.length > 0 ? (
                   <div className="space-y-4">
-                    {patientData.upcomingAppointments.map((appointment) => (
+                    {patientData.appointments.map((appointment) => (
                       <div
                         key={appointment.id}
                         className="flex justify-between items-center p-3 bg-base-200 rounded-lg"
@@ -358,9 +372,9 @@ export default function Dashboard() {
                   </Link>
                 </div>
                 <div className="divider my-2"></div>
-                {patientData.recentPrescriptions.length > 0 ? (
+                {patientData.prescriptions.length > 0 ? (
                   <div className="space-y-4">
-                    {patientData.recentPrescriptions.map((prescription) => (
+                    {patientData.prescriptions.map((prescription) => (
                       <div
                         key={prescription.id}
                         className="flex justify-between items-center p-3 bg-base-200 rounded-lg"
@@ -395,7 +409,7 @@ export default function Dashboard() {
           </div>
 
           {/* Vital Stats */}
-          <div className="card bg-base-100 shadow-lg">
+          {/* <div className="card bg-base-100 shadow-lg">
             <div className="card-body">
               <div className="flex items-center justify-between">
                 <h3 className="card-title text-primary flex items-center">
@@ -432,10 +446,10 @@ export default function Dashboard() {
                 ))}
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Notifications */}
-          <div className="card bg-base-100 shadow-lg">
+          {/* <div className="card bg-base-100 shadow-lg">
             <div className="card-body">
               <div className="flex items-center justify-between">
                 <h3 className="card-title text-error flex items-center">
@@ -481,7 +495,7 @@ export default function Dashboard() {
                 </div>
               )}
             </div>
-          </div>
+          </div> */}
         </div>
       )}
     </PatientLayout>

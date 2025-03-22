@@ -5,7 +5,11 @@ import { useSession, signOut } from "next-auth/react";
 
 const Navbar = () => {
   const { data, status } = useSession();
-  console.log(data, status);
+  // console.log(data, status);
+  // const staff = window.localStorage.getItem("staffId");
+  const staff = "staff_001";
+
+  console.log(staff);
 
   return (
     <div className="navbar bg-base-100/20 shadow-sm px-2 sm:px-5">

@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cura - Hospital Management System
 
-## Getting Started
+## Overview
 
-First, run the development server:
+Cura is an innovative Hospital Management System that aims to improve healthcare operations for both patients and staff.  Built for the Devpost hackathon, it allows users to manage appointments, medicines, medical data, and billing while also giving staff with a dashboard.  It leverages AI, MongoDB, and NextAuth to store data securely.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Why Adopt Cura?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Cura improves hospital operations by consolidating data and automating activities.  It enhances the patient experience by enabling easy appointment booking, record viewing, and bill payment.  The AI-powered chatbot aids with queries, increasing worker availability and operational efficiency.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Demo Video
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Watch Cura in action! Check out our demo video to see how patients and staff interact with the system:
 
-## Learn More
+[Insert Video Demo Link Here]
 
-To learn more about Next.js, take a look at the following resources:
+## Installation and Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Prerequisites
+- Node.js (v18 or higher)
+- MongoDB (local or Atlas)
+- Vercel account (for deployment)
+- Gemini API key (for AI features)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Installation
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/abrahamebij/cura.git
+    ```
 
-## Deploy on Vercel
+2. **Navigate to Folder**  
+   ```
+   cd cura
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Install Dependencies**
+   ```
+   npm install
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Set Up Environment Variables Create a .env.local file in the root directory and add:**
+    ```
+    MONGODB_URI=your-mongodb-uri
+    AUTH_SECRET=your-secret
+    ```
+4. **Run App**
+    ```
+    npm run dev
+    ```

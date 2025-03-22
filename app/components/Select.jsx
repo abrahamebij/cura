@@ -5,8 +5,8 @@ const Select = ({
   includeFirst = true,
   className,
   onChange,
+  selectRef,
 }) => {
-  // const {register} = useForm();
   return (
     <label htmlFor={id} className="w-full flex flex-col gap-y-3 my-3">
       <span className="text-writing text-base lg:text-lg font-semibold">
@@ -14,6 +14,7 @@ const Select = ({
       </span>
       <select
         name={id}
+        ref={selectRef}
         id={id}
         className="select select-bordered w-full focus:outline-0 focus:border-primary"
         onChange={onChange}
