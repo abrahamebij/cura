@@ -17,33 +17,41 @@ Watch Cura in action! Check out our demo video to see how patients and staff int
 ## Installation and Setup
 
 ### Prerequisites
+
 - Node.js (v18 or higher)
 - MongoDB (local or Atlas)
 - Vercel account (for deployment)
 - Gemini API key (for AI features)
 
 ### Installation
+
 1. **Clone the Repository**
+
    ```bash
    git clone https://github.com/abrahamebij/cura.git
     ```
 
 2. **Navigate to Folder**  
-   ```
+
+   ```bash
    cd cura
     ```
 
 3. **Install Dependencies**
-   ```
+
+   ```bash
    npm install
     ```
 
-4. **Set Up Environment Variables Create a .env.local file in the root directory and add:**
-    ```
+4. **Set Up Environment Variables Create a `.env.local` file in the root directory and add:**
+
+    ```bash
     MONGODB_URI=your-mongodb-uri
     AUTH_SECRET=your-secret
     ```
+
 4. **Run App**
-    ```
+
+    ```bash
     npm run dev
     ```

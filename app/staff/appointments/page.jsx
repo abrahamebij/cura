@@ -1,11 +1,46 @@
-// AppointmentsPage.js
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Calendar, Clock, User, CheckSquare } from "lucide-react";
+"use client";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { User } from "lucide-react";
 import StaffLayout from "../../patient/PatientLayout";
 
 const mockAppointments = [
-  // ... (same mock appointments data as before)
+  {
+    _id: "appt_001",
+    patientId: "patient_001",
+    patientName: "John Smith",
+    date: new Date("2025-03-19T10:30:00"),
+    status: "confirmed",
+    reason: "Chest pain follow-up",
+    notes: "Patient reported improvement after medication change",
+  },
+  {
+    _id: "appt_002",
+    patientId: "patient_002",
+    patientName: "Emma Davis",
+    date: new Date("2025-03-19T14:15:00"),
+    status: "pending",
+    reason: "Initial consultation",
+    notes: "",
+  },
+  {
+    _id: "appt_003",
+    patientId: "patient_003",
+    patientName: "Michael Brown",
+    date: new Date("2025-03-19T16:00:00"),
+    status: "confirmed",
+    reason: "Post-surgery check-up",
+    notes: "Check incision site",
+  },
+  {
+    _id: "appt_004",
+    patientId: "patient_004",
+    patientName: "Sophia Wilson",
+    date: new Date("2025-03-20T09:30:00"),
+    status: "confirmed",
+    reason: "Annual check-up",
+    notes: "",
+  },
 ];
 
 const AppointmentsPage = () => {
