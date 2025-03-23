@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import PatientLayout from "../../patient/PatientLayout";
+import StaffLayout from "../StaffLayout";
+
 import { FaFileAlt, FaFilter, FaDownload } from "react-icons/fa";
 
 export default function Records() {
@@ -57,7 +58,7 @@ export default function Records() {
   });
 
   return (
-    <PatientLayout title="Medical Records">
+    <StaffLayout title="Medical Records">
       <div className="flex flex-col space-y-6">
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -162,6 +163,6 @@ export default function Records() {
           </div>
         )}
       </div>
-    </PatientLayout>
+    </StaffLayout>
   );
 }

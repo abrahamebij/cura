@@ -42,8 +42,8 @@ export default function Login() {
         if (result?.error) {
           toast.error(result?.error);
         } else {
-          router.push("/patient");
           toast.success("Logged in successfully");
+          router.push("/patient");
         }
       } catch (error) {
         console.log(error);

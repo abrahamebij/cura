@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import PatientLayout from "../../patient/PatientLayout";
+import StaffLayout from "../StaffLayout";
 import { FaUser, FaEdit, FaSave } from "react-icons/fa";
 import { toast } from "sonner";
 
@@ -40,7 +40,7 @@ function Profile() {
   };
 
   return (
-    <PatientLayout title="Profile">
+    <StaffLayout title="Profile">
       <div className="flex flex-col space-y-6">
         {/* Header */}
         <div className="flex justify-between items-center">
@@ -222,7 +222,7 @@ function Profile() {
           </div>
         )}
       </div>
-    </PatientLayout>
+    </StaffLayout>
   );
 }
 export default Profile;

@@ -10,6 +10,8 @@ import { createPatient, findPatients } from "../database/handlers/patient";
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
   async function handleSubmit(e) {
     e.preventDefault();
     // setLoading(true);
@@ -50,6 +52,7 @@ const Register = () => {
       const response = await createPatient(data);
       console.log(response);
       toast.success(response);
+      router.push("/login");
     }
 
     setLoading(false);

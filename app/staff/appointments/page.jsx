@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { User } from "lucide-react";
-import StaffLayout from "../../patient/PatientLayout";
+import StaffLayout from "../StaffLayout";
 
 const mockAppointments = [
   {
@@ -94,6 +94,12 @@ const AppointmentsPage = () => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  function formatTime(date) {
+    const hours = String(date.getHours()).padStart(2, "0"); // e.g., 09
+    const minutes = String(date.getMinutes()).padStart(2, "0"); // e.g., 05
+    return `${hours}:${minutes}`;
+  }
+
   return (
     <StaffLayout>
       <div className="p-4">
@@ -146,7 +152,7 @@ const AppointmentsPage = () => {
                           </div>
                         </td>
                         <td>{formatDate(appointment.date)}</td>
-                        <td>(appointment.date)</td>
+                        <td>{formatTime(appointment.date)}</td>
                         <td>{appointment.reason}</td>
                         <td>
                           <div className="badge badge-outline badge-sm">

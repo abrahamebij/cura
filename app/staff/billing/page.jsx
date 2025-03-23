@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import PatientLayout from "../../patient/PatientLayout";
+import StaffLayout from "../StaffLayout";
 import { FaCreditCard, FaFilter, FaCheck, FaClock } from "react-icons/fa";
 
 export default function Billing() {
@@ -70,7 +70,7 @@ export default function Billing() {
   };
 
   return (
-    <PatientLayout title="Billing">
+    <StaffLayout title="Billing">
       <div className="flex flex-col space-y-6">
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -170,6 +170,6 @@ export default function Billing() {
           </div>
         )}
       </div>
-    </PatientLayout>
+    </StaffLayout>
   );
 }

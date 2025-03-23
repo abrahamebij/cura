@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import PatientLayout from "../../patient/PatientLayout";
+import StaffLayout from "../StaffLayout";
 import {
   FaPrescriptionBottleAlt,
   FaFilter,
@@ -85,7 +85,7 @@ function Prescriptions() {
   };
 
   return (
-    <PatientLayout title="Prescriptions">
+    <StaffLayout title="Prescriptions">
       <div className="flex flex-col space-y-6">
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -194,7 +194,7 @@ function Prescriptions() {
           </div>
         )}
       </div>
-    </PatientLayout>
+    </StaffLayout>
   );
 }
 

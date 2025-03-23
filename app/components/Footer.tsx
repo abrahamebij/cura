@@ -1,8 +1,9 @@
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 
-export default function Footer() {
+const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-900">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
@@ -41,38 +42,21 @@ export default function Footer() {
                   Solutions
                 </h3>
                 <ul className="mt-4 space-y-4">
-                  <li>
-                    <a
-                      href="#features"
-                      className="text-base text-gray-400 hover:text-white"
-                    >
-                      Patient Management
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#features"
-                      className="text-base text-gray-400 hover:text-white"
-                    >
-                      Smart Scheduling
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#features"
-                      className="text-base text-gray-400 hover:text-white"
-                    >
-                      Medical Analytics
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#features"
-                      className="text-base text-gray-400 hover:text-white"
-                    >
-                      Billing System
-                    </a>
-                  </li>
+                  {[
+                    "Patient Management",
+                    "Smart Scheduling",
+                    "Medical Analytics",
+                    "Billing System",
+                  ].map((item, i) => (
+                    <li key={i}>
+                      <a
+                        href="#features"
+                        className="text-base text-gray-400 hover:text-white"
+                      >
+                        {item}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
@@ -166,4 +150,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

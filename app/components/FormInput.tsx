@@ -1,6 +1,18 @@
 import React from "react";
 
-const FormInput = ({
+type FormInputProps = {
+  id: string;
+  name?: string;
+  title: string;
+  type?: string;
+  placeholder?: string;
+  required?: boolean;
+  defaultValue?: string | number;
+  disabled?: boolean;
+  texts?: string[];
+};
+
+const FormInput: React.FC<FormInputProps> = ({
   id,
   name,
   title,

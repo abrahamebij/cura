@@ -16,52 +16,42 @@ import {
   FaFileMedical,
 } from "react-icons/fa";
 import { RiDashboard3Fill } from "react-icons/ri";
-import { useSession } from "next-auth/react";
 
-export default function PatientLayout({ children, title }) {
-  const { status } = useSession();
+export default function StaffLayout({ children, title }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
-  useEffect(() => {
-    console.log(status);
-
-    if (status === "unauthenticated") {
-      router.push("/login");
-    }
-  }, [status]);
-
   const navigation = [
     {
       name: "Dashboard",
-      href: "/patient/dashboard",
+      href: "/staff/dashboard",
       icon: <RiDashboard3Fill />,
     },
     {
       name: "Appointments",
-      href: "/patient/appointments",
+      href: "/staff/appointments",
       icon: <FaCalendar />,
     },
     {
       name: "Medical Records",
-      href: "/patient/records",
+      href: "/staff/records",
       icon: <FaFileMedical />,
     },
     {
       name: "Prescriptions",
-      href: "/patient/prescriptions",
+      href: "/staff/prescriptions",
       icon: <FaPrescriptionBottle />,
     },
-    { name: "Billing", href: "/patient/billing", icon: <FaCreditCard /> },
-    { name: "Profile", href: "/patient/profile", icon: <FaUser /> },
+    { name: "Billing", href: "/staff/billing", icon: <FaCreditCard /> },
+    { name: "Profile", href: "/staff/profile", icon: <FaUser /> },
   ];
 
   return (
     <div className="min-h-screen bg-gray-100">
       <Head>
         <title>
-          {title ? `${title} - Cura Patient Portal` : "Cura Patient Portal"}
+          {title ? `${title} - Cura Staff Portal` : "Cura Staff Portal"}
         </title>
       </Head>
 

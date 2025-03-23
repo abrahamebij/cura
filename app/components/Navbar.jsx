@@ -5,7 +5,7 @@ import { useSession, signOut } from "next-auth/react";
 
 const Navbar = () => {
   const { data, status } = useSession();
-  // console.log(data, status);
+  console.log(data, status);
   // const staff = window.localStorage.getItem("staffId");
   const staff = "staff_001";
 

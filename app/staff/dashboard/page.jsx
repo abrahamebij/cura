@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import StaffLayout from "../../patient/PatientLayout";
+import StaffLayout from "../StaffLayout";
 import {
   Calendar,
   Users,
