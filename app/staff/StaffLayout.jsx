@@ -14,8 +14,11 @@ import {
   FaTimes,
   FaBars,
   FaFileMedical,
+  FaUserInjured,
+  FaTasks,
 } from "react-icons/fa";
 import { RiDashboard3Fill } from "react-icons/ri";
+import { HiDocumentReport } from "react-icons/hi";
 
 export default function StaffLayout({ children, title }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -28,22 +31,22 @@ export default function StaffLayout({ children, title }) {
       href: "/staff/dashboard",
       icon: <RiDashboard3Fill />,
     },
+    { name: "Patients", href: "/staff/patients", icon: <FaUserInjured /> },
     {
-      name: "Appointments",
-      href: "/staff/appointments",
-      icon: <FaCalendar />,
+      name: "Tasks",
+      href: "/staff/tasks",
+      icon: <FaTasks />,
     },
     {
-      name: "Medical Records",
-      href: "/staff/records",
-      icon: <FaFileMedical />,
+      name: "Reports",
+      href: "/staff/reports",
+      icon: <HiDocumentReport />,
     },
     {
       name: "Prescriptions",
       href: "/staff/prescriptions",
       icon: <FaPrescriptionBottle />,
     },
-    { name: "Billing", href: "/staff/billing", icon: <FaCreditCard /> },
     { name: "Profile", href: "/staff/profile", icon: <FaUser /> },
   ];
 

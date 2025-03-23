@@ -1,19 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
 import Img from "../components/Img";
 import Link from "next/link";
-import { FaArrowCircleRight, FaArrowRight } from "react-icons/fa";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 const Hero = () => {
-  const [state, setState] = useState(false);
-
-  useEffect(() => {
-    document.onclick = (e) => {
-      const target = e.target;
-      if (!target.closest(".menu-btn")) setState(false);
-    };
-  }, []);
-
   return (
     <div className="relative">
       <div
@@ -28,12 +18,20 @@ const Hero = () => {
           <div className="max-w-screen-xl mx-auto px-4 py-28 gap-12 text-gray-600 overflow-hidden md:px-8 md:flex">
             <div className="flex-none mx-auto space-y-5 max-w-xl text-center md:text-start">
               <h1 className="text-4xl text-gray-800 font-extrabold sm:text-5xl">
-                The Complete Health Management Platform
+                Welcome to Cura
               </h1>
-              <p>
-                Sed ut perspiciatis unde omnis iste natus voluptatem accusantium
-                doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-              </p>
+              <div className="flex flex-col gap-y-1">
+                <p>
+                  Cura, meaning &quot;care&quot; in Latin, is your all-in-one
+                  Hospital Management System. Streamline appointments, manage
+                  records, and enhance patient care with ease.
+                </p>
+                <p>
+                  Whether you&apos;rea patient or a healthcare professional,
+                  Cura empowers you to focus on what matters most—delivering and
+                  receiving exceptional care.
+                </p>
+              </div>
               <div className="flex justify-center md:justify-start items-center gap-x-3 sm:text-sm">
                 <Link
                   href="/patient/dashboard"

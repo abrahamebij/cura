@@ -1,51 +1,55 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import StaffLayout from "../StaffLayout";
 import {
   FaPrescriptionBottleAlt,
   FaFilter,
-  FaPlus,
   FaCheck,
-  FaTimes,
+  FaClock,
 } from "react-icons/fa";
 
-function Prescriptions() {
+export default function Prescriptions() {
   const [prescriptions, setPrescriptions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState("active");
+  const [filter, setFilter] = useState("all"); // Default filter: show all prescriptions
 
   useEffect(() => {
     setLoading(true);
+    // Mock data for Dr. Sarah Johnson (staffId: "S001"), aligning patient names
     const mockPrescriptions = [
       {
-        id: 101,
-        name: "Lisinopril",
-        dosage: "10mg",
+        id: 1,
+        patientId: "P001",
+        patientName: "John Doe",
+        name: "Amlodipine",
+        dosage: "5mg",
         frequency: "Once daily",
-        prescribedDate: "2025-03-12",
+        prescribedDate: "2025-03-10",
         refills: 2,
         status: "active",
-        doctor: "Dr. Sarah Johnson",
       },
       {
-        id: 102,
+        id: 2,
+        patientId: "P002",
+        patientName: "Jane Smith",
         name: "Metformin",
         dosage: "500mg",
         frequency: "Twice daily",
-        prescribedDate: "2025-03-10",
-        refills: 5,
-        status: "active",
-        doctor: "Dr. Michael Wilson",
+        prescribedDate: "2025-03-05",
+        refills: 0,
+        status: "expired",
       },
       {
-        id: 103,
+        id: 3,
+        patientId: "P003",
+        patientName: "Alice Brown",
         name: "Ibuprofen",
         dosage: "200mg",
         frequency: "As needed",
-        prescribedDate: "2025-01-15",
-        refills: 0,
-        status: "expired",
-        doctor: "Dr. Emily Roberts",
+        prescribedDate: "2025-03-01",
+        refills: 1,
+        status: "active",
       },
     ];
 
@@ -55,16 +59,19 @@ function Prescriptions() {
     }, 800);
   }, []);
 
+  // Format dates for display
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "short", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  // Filter prescriptions
   const filteredPrescriptions = prescriptions.filter((prescription) => {
     if (filter === "all") return true;
     return prescription.status === filter;
   });
 
+  // Get status badge
   const getStatusBadge = (status) => {
     switch (status) {
       case "active":
@@ -76,7 +83,7 @@ function Prescriptions() {
       case "expired":
         return (
           <span className="badge badge-error gap-1">
-            <FaTimes size={10} /> Expired
+            <FaClock size={10} /> Expired
           </span>
         );
       default:
@@ -91,15 +98,12 @@ function Prescriptions() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h1 className="text-2xl font-bold text-secondary flex items-center gap-2">
-              <FaPrescriptionBottleAlt /> My Prescriptions
+              <FaPrescriptionBottleAlt /> Prescriptions
             </h1>
             <p className="text-gray-600 mt-1">
-              View and manage your medication prescriptions
+              Manage prescriptions for your patients
             </p>
           </div>
-          <button className="btn btn-secondary">
-            <FaPlus className="mr-2" /> Request New Prescription
-          </button>
         </div>
 
         {/* Filters */}
@@ -154,26 +158,33 @@ function Prescriptions() {
                   <div className="flex flex-col sm:flex-row justify-between gap-4">
                     <div>
                       <h3 className="text-lg font-medium">
-                        {prescription.name}
+                        {prescription.name} for {prescription.patientName}
                       </h3>
                       <p className="text-sm text-gray-600">
-                        {prescription.dosage}, {prescription.frequency}
+                        Dosage: {prescription.dosage} | Frequency:{" "}
+                        {prescription.frequency}
                       </p>
                       <p className="text-sm text-gray-500 mt-1">
-                        Prescribed by {prescription.doctor} on{" "}
-                        {formatDate(prescription.prescribedDate)}
+                        Prescribed: {formatDate(prescription.prescribedDate)}
                       </p>
                       <p className="text-sm text-gray-500">
                         Refills Remaining: {prescription.refills}
                       </p>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
                       {getStatusBadge(prescription.status)}
-                      {prescription.status === "active" && (
-                        <button className="btn btn-sm btn-secondary">
-                          Request Refill
-                        </button>
-                      )}
+                      {prescription.status === "active" &&
+                        prescription.refills > 0 && (
+                          <button className="btn btn-sm btn-warning">
+                            Approve Refill
+                          </button>
+                        )}
+                      <Link
+                        href={`/staff/patients/${prescription.patientId}/prescriptions`}
+                        className="btn btn-sm btn-secondary"
+                      >
+                        View History
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -188,7 +199,7 @@ function Prescriptions() {
                 No prescriptions found
               </h3>
               <p className="text-gray-500 mt-2">
-                Contact your doctor to request a new prescription
+                Prescriptions for your patients will appear here
               </p>
             </div>
           </div>
@@ -197,5 +208,3 @@ function Prescriptions() {
     </StaffLayout>
   );
 }
-
-export default Prescriptions;
