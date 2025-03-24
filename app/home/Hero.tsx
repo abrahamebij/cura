@@ -34,7 +34,7 @@ const Hero = () => {
               </div>
               <div className="flex justify-center lg:justify-start items-center gap-x-3 sm:text-sm">
                 <Link
-                  href="/patient/dashboard"
+                  href="/register"
                   className="flex items-center justify-center gap-x-2 hover:gap-x-3.5 py-2 px-4 text-white font-medium bg-gray-800 duration-150 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
                 >
                   Get started

@@ -106,7 +106,7 @@ const Register = () => {
             } mb-5 mt-8`}
             disabled={loading}
           >
-            {loading ? "Hang On" : "Login"}
+            {loading ? "Hang On..." : "Submit"}
           </button>
           <p className="text-sm text-center py-3">
             Already have an account? Login{" "}
