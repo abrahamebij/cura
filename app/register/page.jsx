@@ -14,7 +14,7 @@ const Register = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    // setLoading(true);
+    setLoading(true);
     let {
       name,
       email,
@@ -38,24 +38,26 @@ const Register = () => {
       bloodGroup: bloodGroup.value.trim(),
       password: password.value,
     };
-    const findPatient = JSON.parse(
-      await findPatients({ email: email.value.trim() })
-    );
-    console.log(findPatient);
-
-    //Form Validation
-    if (findPatient.response.length !== 0) {
-      toast.error("User with this email already exists...Try logging in");
-    } else if (password.value != confirmPassword.value) {
-      toast.error("The passwords doesn't match");
-    } else {
-      const response = await createPatient(data);
-      console.log(response);
-      toast.success(response);
-      router.push("/login");
+    try {
+      const findPatient = JSON.parse(
+        await findPatients({ email: email.value.trim() })
+      );
+      //Form Validation
+      if (findPatient.response.length !== 0) {
+        toast.error("User with this email already exists...Try logging in");
+      } else if (password.value != confirmPassword.value) {
+        toast.error("The passwords doesn't match");
+      } else {
+        const response = await createPatient(data);
+        console.log(response);
+        toast.success(response);
+        router.push("/login");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   }
   return (
     <div className="w-full h-full flex items-center justify-center flex-1 my-20">
@@ -104,7 +106,7 @@ const Register = () => {
             } mb-5 mt-8`}
             disabled={loading}
           >
-            {loading ? "Hold On" : "Submit"}
+            {loading ? "Hang On" : "Login"}
           </button>
           <p className="text-sm text-center py-3">
             Already have an account? Login{" "}

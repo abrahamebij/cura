@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/components/Img.jsx",
-    "app/components/Img.jsx"
+    "app/components/Img.jsx",
+    "app/database/dbConnect.js"
   ],
   "exclude": ["node_modules"]
 }
