@@ -117,7 +117,7 @@ const mockTasks = [
     _id: "task_003",
     type: "referral",
     patientName: "Sophia Wilson",
-    description: "Complete referral to electrophysiologist",
+    description: "Complete referral to electro-physiologist",
     priority: "medium",
     dueDate: new Date("2025-03-20"),
   },
@@ -156,75 +156,82 @@ export default function StaffDashboard() {
   const [appointmentFilter, setAppointmentFilter] = useState("all");
   const [patientFilter, setPatientFilter] = useState("all");
   const [taskFilter, setTaskFilter] = useState("all");
-  const [mockStaff, setMockStaff] = useState();
+  const [mockStaff, setMockStaff] = useState({
+    _id: "",
+    name: "",
+    staffId: "",
+    role: "",
+    specialty: "",
+    email: "",
+    phone: "",
+    department: "",
+    availability: [],
+  });
   const router = useRouter();
   // const staffId = "staff_001";
   const [staffId, setStaffId] = useState("");
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      console.log("window.innerHeight", window.innerHeight);
-      setStaffId(window.localStorage.getItem("staffId"));
-      console.log(window.localStorage.getItem("staffId"));
-    }
-  }, []);
-
   // Simulate API fetch delay
   useEffect(() => {
-    (function generateMockStaff() {
-      if (staffId === null) {
-        // router.push("/login");
-        toast.error("Invalid Authentication");
-      } else if (staffId === "staff_001") {
-        setMockStaff({
-          _id: "staff_001",
-          name: "Dr. Choi Lee",
-          staffId: "S001",
-          role: "Doctor",
-          specialty: "Surgery",
-          email: "choi.lee@cura.com",
-          phone: "+1 (555) 324-6948",
-          department: "Surgery",
-          availability: [
-            {
-              day: "Tuesday",
-              slots: ["11:00 AM - 2:00 PM", "6:00 PM - 9:00 PM"],
-            },
-            {
-              day: "Wednesday",
-              slots: ["8:00 AM - 11:00 AM", "2:00 PM - 5:00 PM"],
-            },
-            { day: "Friday", slots: ["7:00 AM - 12:00 PM"] },
-          ],
-        });
-        setLoading(false);
-      } else if (staffId === "staff_002") {
-        setMockStaff({
-          _id: "staff_001",
-          name: "Dr. Sarah Johnson",
-          staffId: "S001",
-          role: "Doctor",
-          specialty: "Cardiology",
-          email: "sarah.johnson@cura.com",
-          phone: "+1 (555) 123-4567",
-          department: "Cardiology",
-          availability: [
-            {
-              day: "Monday",
-              slots: ["9:00 AM - 12:00 PM", "2:00 PM - 5:00 PM"],
-            },
-            {
-              day: "Wednesday",
-              slots: ["9:00 AM - 12:00 PM", "2:00 PM - 5:00 PM"],
-            },
-            { day: "Friday", slots: ["9:00 AM - 12:00 PM"] },
-          ],
-        });
-        setLoading(false);
-      }
+    if (typeof window !== "undefined") {
+      setStaffId(window.localStorage.getItem("staffId"));
+    }
+    // (function generateMockStaff() {
+    if (staffId === null) {
+      router.push("/login");
+      toast.error("Invalid Authentication");
+    } else if (staffId === "staff_001") {
+      setMockStaff({
+        _id: "staff_001",
+        name: "Dr. Choi Lee",
+        staffId: "S001",
+        role: "Doctor",
+        specialty: "Surgery",
+        email: "choi.lee@cura.com",
+        phone: "+1 (555) 324-6948",
+        department: "Surgery",
+        availability: [
+          {
+            day: "Tuesday",
+            slots: ["11:00 AM - 2:00 PM", "6:00 PM - 9:00 PM"],
+          },
+          {
+            day: "Wednesday",
+            slots: ["8:00 AM - 11:00 AM", "2:00 PM - 5:00 PM"],
+          },
+          { day: "Friday", slots: ["7:00 AM - 12:00 PM"] },
+        ],
+      });
       setLoading(false);
-    })();
-  }, []);
+    } else if (staffId === "staff_002") {
+      setMockStaff({
+        _id: "staff_001",
+        name: "Dr. Sarah Johnson",
+        staffId: "S001",
+        role: "Doctor",
+        specialty: "Cardiology",
+        email: "sarah.johnson@cura.com",
+        phone: "+1 (555) 123-4567",
+        department: "Cardiology",
+        availability: [
+          {
+            day: "Monday",
+            slots: ["9:00 AM - 12:00 PM", "2:00 PM - 5:00 PM"],
+          },
+          {
+            day: "Wednesday",
+            slots: ["9:00 AM - 12:00 PM", "2:00 PM - 5:00 PM"],
+          },
+          { day: "Friday", slots: ["9:00 AM - 12:00 PM"] },
+        ],
+      });
+      setLoading(false);
+    }
+    // log
+    setLoading(false);
+    // })();
+    console.log(staffId);
+  }, [staffId]);
 
   // Filter appointments based on selected filter
   const filteredAppointments = mockAppointments.filter((appointment) => {

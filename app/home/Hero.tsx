@@ -7,16 +7,16 @@ const Hero = () => {
   return (
     <div className="relative">
       <div
-        className="absolute inset-0 blur-xl h-[580px]"
+        className="absolute inset-0 blur-xl h-[580px] min-h-[100vh] bottom-0"
         style={{
           background:
-            "linear-gradient(143.6deg, rgba(192, 132, 252, 0) 20.79%, rgba(232, 121, 249, 0.26) 40.92%, rgba(204, 171, 238, 0) 70.35%)",
+            "linear-gradient(143.6deg, rgba(192, 132, 252, 0) 20.79%, rgba(72, 123, 255, 0.26) 30.92%, rgba(204, 171, 238, 0) 70.35%)",
         }}
       ></div>
       <div className="relative">
         <section>
-          <div className="max-w-screen-xl mx-auto px-4 py-28 gap-12 text-gray-600 overflow-hidden md:px-8 md:flex">
-            <div className="flex-none mx-auto space-y-5 max-w-xl text-center md:text-start">
+          <div className="max-w-screen-xl mx-auto px-4 py-16 lg:pb-5 lg:pt-0 relative gap-12 text-gray-600 overflow-hidden md:px-8 flex lg:flex flex-col lg:flex-row items-center">
+            <div className="flex-none mx-auto space-y-5 max-w-xl text-center lg:text-start lg:w-3/5 gap-y-5">
               <h1 className="text-4xl text-gray-800 font-extrabold sm:text-5xl">
                 Welcome to Cura
               </h1>
@@ -32,7 +32,7 @@ const Hero = () => {
                   receiving exceptional care.
                 </p>
               </div>
-              <div className="flex justify-center md:justify-start items-center gap-x-3 sm:text-sm">
+              <div className="flex justify-center lg:justify-start items-center gap-x-3 sm:text-sm">
                 <Link
                   href="/patient/dashboard"
                   className="flex items-center justify-center gap-x-2 hover:gap-x-3.5 py-2 px-4 text-white font-medium bg-gray-800 duration-150 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
@@ -42,13 +42,9 @@ const Hero = () => {
                 </Link>
               </div>
             </div>
-            <div className="flex-1 hidden md:block">
+            <div className="flex-1 mx-auto w-4/5 md:w-3/5 lg:w-full">
               {/* Replace with your image */}
-              <Img
-                src="https://raw.githubusercontent.com/sidiDev/remote-assets/c86a7ae02ac188442548f510b5393c04140515d7/undraw_progressive_app_m-9-ms_oftfv5.svg"
-                className="max-w-xl"
-                alt="Hero Preview"
-              />
+              <Img src="/doctor.svg" className="max-w-xl" alt="Hero Preview" />
             </div>
           </div>
         </section>
