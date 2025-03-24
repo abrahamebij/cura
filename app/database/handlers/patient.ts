@@ -1,8 +1,10 @@
 "use server";
 import Patient from "../models/Patient";
 import bcrypt from "bcryptjs";
+import dbConnect from "../dbConnect";
 
 async function findOnePatient(data: object) {
+  await dbConnect();
   interface results {
     type: [unknown];
   }
@@ -18,6 +20,7 @@ async function findOnePatient(data: object) {
 }
 
 async function findPatients(data: object) {
+  await dbConnect();
   interface results {
     type: [unknown];
   }
@@ -33,6 +36,7 @@ async function findPatients(data: object) {
 }
 
 async function createPatient(data: { password: string }) {
+  await dbConnect();
   // Extract password from the data object
   const { password } = data;
 
