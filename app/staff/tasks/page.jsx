@@ -96,7 +96,7 @@ export default function Tasks() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-warning flex items-center gap-2">
+            <h1 className="text-2xl font-bold text-writing flex items-center gap-2">
               <FaTasks /> My Tasks
             </h1>
             <p className="text-gray-600 mt-1">
@@ -161,11 +161,11 @@ export default function Tasks() {
                         Due: {formatDate(task.dueDate)}
                       </p>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 justify-between">
                       {getPriorityBadge(task.priority)}
                       <button
                         onClick={() => handleComplete(task.id)}
-                        className="btn btn-sm btn-success"
+                        className="btn btn-sm btn-primary"
                       >
                         <FaCheck className="mr-2" /> Complete
                       </button>

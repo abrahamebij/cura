@@ -136,22 +136,13 @@ export default function Patients() {
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      <Link
-                        href={`/staff/patients/${patient.id}/records`}
-                        className="btn btn-sm btn-primary"
-                      >
+                      <Link href={`#`} className="btn btn-sm btn-primary">
                         <FaFileAlt className="mr-2" /> View Records
                       </Link>
-                      <Link
-                        href={`/staff/patients/${patient.id}/appointments`}
-                        className="btn btn-sm btn-secondary"
-                      >
+                      <Link href={`#`} className="btn btn-sm btn-secondary">
                         <FaCalendarAlt className="mr-2" /> Schedule Appointment
                       </Link>
-                      <Link
-                        href={`/staff/patients/${patient.id}/prescriptions`}
-                        className="btn btn-sm btn-warning"
-                      >
+                      <Link href={`#`} className="btn btn-sm btn-warning">
                         <FaPrescriptionBottleAlt className="mr-2" /> Manage
                         Prescriptions
                       </Link>

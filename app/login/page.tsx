@@ -82,9 +82,12 @@ export default function Login() {
     // Staff portal login logic (hardcoded passwords)
     else if (portal === "staff") {
       if (password === "choi102") {
+        // window.localStorage.clear();
+        window.localStorage.setItem("staffId", "staff_001");
         toast.success("Logged in successfully to Dr. Choi's account");
         router.push("/staff/dashboard");
       } else if (password === "sarahSmith2") {
+        window.localStorage.setItem("staffId", "staff_002");
         toast.success("Logged in successfully to Dr. Sarah's account");
         router.push("/staff/dashboard");
       } else {

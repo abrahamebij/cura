@@ -158,8 +158,16 @@ export default function StaffDashboard() {
   const [taskFilter, setTaskFilter] = useState("all");
   const [mockStaff, setMockStaff] = useState();
   const router = useRouter();
-  const staffId = "staff_001";
-  // const staffId = window.localStorage.getItem("staffId");
+  // const staffId = "staff_001";
+  const [staffId, setStaffId] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      console.log("window.innerHeight", window.innerHeight);
+      setStaffId(window.localStorage.getItem("staffId"));
+      console.log(window.localStorage.getItem("staffId"));
+    }
+  }, []);
 
   // Simulate API fetch delay
   useEffect(() => {
@@ -173,20 +181,20 @@ export default function StaffDashboard() {
           name: "Dr. Choi Lee",
           staffId: "S001",
           role: "Doctor",
-          specialty: "Cardiology",
-          email: "sarah.johnson@cura.com",
-          phone: "+1 (555) 123-4567",
-          department: "Cardiology",
+          specialty: "Surgery",
+          email: "choi.lee@cura.com",
+          phone: "+1 (555) 324-6948",
+          department: "Surgery",
           availability: [
             {
-              day: "Monday",
-              slots: ["9:00 AM - 12:00 PM", "2:00 PM - 5:00 PM"],
+              day: "Tuesday",
+              slots: ["11:00 AM - 2:00 PM", "6:00 PM - 9:00 PM"],
             },
             {
               day: "Wednesday",
-              slots: ["9:00 AM - 12:00 PM", "2:00 PM - 5:00 PM"],
+              slots: ["8:00 AM - 11:00 AM", "2:00 PM - 5:00 PM"],
             },
-            { day: "Friday", slots: ["9:00 AM - 12:00 PM"] },
+            { day: "Friday", slots: ["7:00 AM - 12:00 PM"] },
           ],
         });
         setLoading(false);
@@ -217,7 +225,6 @@ export default function StaffDashboard() {
       setLoading(false);
     })();
   }, []);
-  console.log(mockStaff);
 
   // Filter appointments based on selected filter
   const filteredAppointments = mockAppointments.filter((appointment) => {
@@ -256,23 +263,6 @@ export default function StaffDashboard() {
           <span className="loading loading-spinner loading-lg text-primary"></span>
         </div>
       ) : (
-        // <div className="p-4">
-        //   <div className="flex flex-col gap-6">
-        //     {/* Loading skeletons */}
-        //     <div className="h-20 bg-base-200 animate-pulse rounded-lg"></div>
-        //     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        //       {[1, 2, 3].map((i) => (
-        //         <div
-        //           key={i}
-        //           className="h-32 bg-base-200 animate-pulse rounded-lg"
-        //         ></div>
-        //       ))}
-        //     </div>
-        //     <div className="h-64 bg-base-200 animate-pulse rounded-lg"></div>
-        //     <div className="h-64 bg-base-200 animate-pulse rounded-lg"></div>
-        //     <div className="h-64 bg-base-200 animate-pulse rounded-lg"></div>
-        //   </div>
-        // </div>
         <div className="p-4">
           <div className="flex flex-col gap-6">
             {/* Welcome Section */}

@@ -12,7 +12,7 @@ const Navbar = () => {
   console.log(staff);
 
   return (
-    <div className="navbar bg-base-100/20 shadow-sm px-2 sm:px-5">
+    <div className="navbar bg-base-100/20 shadow-sm px-4 sm:px-7">
       <div className="flex-1">
         <Link
           href="/"

@@ -33,10 +33,10 @@ export default function FeaturesSection() {
     <section id="features" className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+          <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 sm:text-4xl">
             Comprehensive Healthcare Management
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+          <p className="mt-4 max-w-2xl mx-auto text-base lg:text-xl text-gray-500">
             Cura streamlines every aspect of hospital operations to improve
             patient care and staff efficiency.
           </p>

@@ -171,20 +171,25 @@ export default function Prescriptions() {
                         Refills Remaining: {prescription.refills}
                       </p>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-between gap-2">
                       {getStatusBadge(prescription.status)}
-                      {prescription.status === "active" &&
-                        prescription.refills > 0 && (
-                          <button className="btn btn-sm btn-warning">
-                            Approve Refill
-                          </button>
-                        )}
-                      <Link
-                        href={`/staff/patients/${prescription.patientId}/prescriptions`}
-                        className="btn btn-sm btn-secondary"
-                      >
-                        View History
-                      </Link>
+                      <div className="flex gap-x-2">
+                        {prescription.status === "active" &&
+                          prescription.refills > 0 && (
+                            <button
+                              className="btn btn-sm btn-warning"
+                              onClick={() => alert("Refill Approved")}
+                            >
+                              Approve Refill
+                            </button>
+                          )}
+                        <Link
+                          href={`/staff/patients/${prescription.patientId}/prescriptions`}
+                          className="btn btn-sm btn-secondary"
+                        >
+                          View History
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
