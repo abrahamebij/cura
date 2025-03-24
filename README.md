@@ -18,7 +18,7 @@ Cura improves hospital operations by consolidating data and automating activitie
 
 Watch Cura in action! Check out our demo video to see how patients and staff interact with the system:
 
-[Video Demo Link Here](https://github.com/user-attachments/assets/84018af3-df0c-480e-a7f1-ae615f819d6d)
+[Video Demo Link Here](https://github.com/user-attachments/assets/3143d6b8-0f83-445d-bc17-f0705b3cd6fd)
 
 ## Installation and Setup
 
