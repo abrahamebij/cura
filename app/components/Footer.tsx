@@ -144,7 +144,7 @@ const Footer: React.FC = () => {
         <div className="mt-12 border-t border-gray-700 pt-8">
           <p className="text-base text-gray-400 text-center">
             &copy; {new Date().getFullYear()} Cura Health Systems. All rights
-            reserved. Created for Devpost Hackathon.
+            reserved. Created for StackUp Hackathon.
           </p>
         </div>
       </div>
