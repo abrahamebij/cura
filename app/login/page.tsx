@@ -85,6 +85,9 @@ export default function Login() {
       if (password === "choi102") {
         window.localStorage.setItem("staffId", "staff_001");
         toast.success("Logged in successfully to Dr. Choi's account");
+        const a = document.createElement("a");
+        a.href = "/staff/dashboard";
+        a.click();
         // router.push("/staff/dashboard");
       } else if (password === "sarahSmith2") {
         window.localStorage.setItem("staffId", "staff_002");
