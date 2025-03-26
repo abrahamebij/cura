@@ -2,6 +2,7 @@
 import Img from "../components/Img";
 import Link from "next/link";
 import { FaArrowCircleRight } from "react-icons/fa";
+import { Typewriter } from "nextjs-simple-typewriter";
 
 const Hero = () => {
   return (
@@ -18,7 +19,7 @@ const Hero = () => {
           <div className="max-w-screen-xl mx-auto px-4 py-16 lg:pb-5 lg:pt-0 relative gap-12 text-gray-600 overflow-hidden md:px-8 flex lg:flex flex-col lg:flex-row items-center">
             <div className="flex-none mx-auto space-y-5 max-w-xl text-center lg:text-start lg:w-3/5 gap-y-5">
               <h1 className="text-4xl text-gray-800 font-extrabold sm:text-5xl">
-                Welcome to Cura
+                <Typewriter words={["Welcome to Cura"]} />
               </h1>
               <div className="flex flex-col gap-y-1">
                 <p>

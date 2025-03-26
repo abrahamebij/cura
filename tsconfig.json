@@ -28,8 +28,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/components/Img.jsx",
-    "app/components/Img.jsx",
-    "app/database/dbConnect.js"
+    "app/components/Chatbot.tsx",
+    "app/database/dbConnect.js",
+    "app/database/handlers/generateText.js"
   ],
   "exclude": ["node_modules"]
 }

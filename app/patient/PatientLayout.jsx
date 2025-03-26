@@ -17,6 +17,7 @@ import {
 } from "react-icons/fa";
 import { RiDashboard3Fill } from "react-icons/ri";
 import { useSession } from "next-auth/react";
+import Chatbot from "../components/Chatbot";
 
 export default function PatientLayout({ children, title }) {
   const { status } = useSession();
@@ -157,6 +158,8 @@ export default function PatientLayout({ children, title }) {
           </div>
         </main>
       </div>
+      {/* Floating Chatbot */}
+      <Chatbot />
     </div>
   );
 }

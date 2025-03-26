@@ -1,4 +1,4 @@
-# Cura - Hospital Management System
+# Cura - Hospital Management System (With AI Chatbot)
 
 ## Overview
 
