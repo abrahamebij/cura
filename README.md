@@ -55,6 +55,7 @@ Watch Cura in action! Check out our demo video to see how patients and staff int
     ```bash
     MONGODB_URI=your-mongodb-uri
     AUTH_SECRET=your-secret
+    GEMINI_API_KEY=aistudio.google.com
     ```
 
 5. **Run App**
