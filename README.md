@@ -4,6 +4,9 @@
 
 Cura (from Latin word meaning "Care") is an innovative Hospital Management System form Stackup's March hackathon that aims to improve healthcare operations for both patients and staff.  Built for the Devpost hackathon, it allows users to manage appointments, medicines, medical data, and billing while also giving staff with a dashboard.  It leverages AI, MongoDB, and NextAuth to store data securely.
 
+![Screenshot_20250329-201337_Chrome](https://github.com/user-attachments/assets/441760f1-6299-408c-b05d-fb2f99242d0f)
+
+
 ### Why Adopt Cura?
 
 Cura improves hospital operations by consolidating data and automating activities.  It enhances the patient experience by enabling easy appointment booking, record viewing, and bill payment.  The AI-powered chatbot aids with queries, increasing worker availability and operational efficiency.
